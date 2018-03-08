@@ -1,10 +1,15 @@
 import React from 'react'
 
-import { ShipVisitListLi, PilotingListHeader, PilotingListLi } from '../styled-components/ShipVisit'
+import { ShipVisitListLi, ShipVisitItemHeader, PilotingListHeader, PilotingListLi } from '../styled-components/ShipVisit'
 
-export const ShipVisitItem = ({ visit, children, ...props }) =>
+const computeButtonText = visit => visit.active ? 'Sulje' : 'Avaa'
+
+export const ShipVisitItem = ({ visit, onVisitClick, children, ...props }) =>
   <ShipVisitListLi {...props}>
-    { children }
+    <ShipVisitItemHeader>
+      { children }
+      <button onClick={onVisitClick}>{computeButtonText(visit)}</button>
+    </ShipVisitItemHeader>
     <ul className={visit.active ? '' : 'hidden'}>
       <PilotingListHeader>
         <span>ISA</span>
@@ -13,7 +18,7 @@ export const ShipVisitItem = ({ visit, children, ...props }) =>
         <span>Luotsi</span>
       </PilotingListHeader>
     { visit.pilotings.map((event, i) =>
-      <PilotingListLi key={event.ship + i} bgColor={event.bgColor}>
+      <PilotingListLi key={event.ship + i} state={event.state}>
         <span>{event.ship}</span>
         <span>{event.eta.format('D.M.YYYY H:mm:ss')}</span>
         <span>{event.location}</span>

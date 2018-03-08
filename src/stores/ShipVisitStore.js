@@ -12,9 +12,9 @@ const parseDatesFromVisits = visits => visits.map(v =>
 )
 
 const computePilotingState = (piloting, pastCurrent) => {
-  if (moment().isSameOrAfter(piloting.eta)) return 'extraDarkSmoke'
-  else if (pastCurrent) return 'lightYellow'
-  return 'lightGreen'
+  if (moment().isSameOrAfter(piloting.eta)) return 'passed'
+  else if (pastCurrent) return 'upcoming'
+  return 'current'
 }
 
 const addBgColorToPilotings = pilotings => {
@@ -22,7 +22,7 @@ const addBgColorToPilotings = pilotings => {
   return pilotings.map(p => {
     const state = computePilotingState(p, currentPassed)
     if (!currentPassed && moment().isSameOrBefore(p.eta)) currentPassed = true
-    return { ...p, bgColor: state }
+    return { ...p, state }
   })
 }
 
