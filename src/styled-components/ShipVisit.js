@@ -7,23 +7,31 @@ const pilotingListLiTypes = {
   passed: {
     background: colors['extraDarkSmoke'],
     'border-width': '1px 1px 0 1px',
-    margin: '0 10px 0 10px'
+    margin: '0 10px 0 10px',
+    padding: '10px'
   },
   current: {
     background: colors['lightGreen'],
     'border-width': '1px',
-    margin: '0'
+    margin: '0',
+    padding: '20px'
   },
   upcoming: {
     background: colors['lightYellow'],
     'border-width': '0 1px 1px 1px',
-    margin: '0 10px 0 10px'
+    margin: '0 10px 0 10px',
+    padding: '10px'
   }
 }
 
 export const ShipVisitItemHeader = styled.div`
+  align-items: center;
   display: flex;
   justify-content: space-between;
+
+  & > span {
+    width: 20%;
+  }
 `
 
 export const ShipVisitListLi = styled.li`
@@ -51,7 +59,7 @@ export const PilotingListLi = styled.li`
   cursor: pointer;
   display: flex;
   margin: ${({ state }) => pilotingListLiTypes[state]['margin']};
-  padding: 10px;
+  padding: ${({ state }) => pilotingListLiTypes[state]['padding']};
 
   &:hover {
     background: ${({ state }) => darken(0.1, pilotingListLiTypes[state]['background'])};
