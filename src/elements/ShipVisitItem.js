@@ -1,6 +1,7 @@
 import React from 'react'
 
 import Button from '../elements/Button'
+import { SmoothContainer } from '../styled-components/Container'
 import { ShipVisitListLi, ShipVisitItemHeader, PilotingListHeader, PilotingListLi } from '../styled-components/ShipVisit'
 
 const computeButtonText = visit => visit.active ? 'Sulje' : 'Avaa'
@@ -22,7 +23,8 @@ export const ShipVisitItem = ({ visit, onVisitClick, children, ...props }) =>
       buttonText={computeButtonText(visit)}
       onVisitClick={onVisitClick}
     />
-    <ul className={visit.active ? '' : 'hidden'}>
+    <SmoothContainer visible={visit.active}>
+    <ul>
       <PilotingListHeader>
         <span>ISA</span>
         <span>ETA</span>
@@ -38,4 +40,5 @@ export const ShipVisitItem = ({ visit, onVisitClick, children, ...props }) =>
       </PilotingListLi>
     )}
     </ul>
+    </SmoothContainer>
   </ShipVisitListLi>

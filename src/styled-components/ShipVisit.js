@@ -17,7 +17,7 @@ const pilotingListLiTypes = {
     padding: '20px'
   },
   upcoming: {
-    background: colors['lightYellow'],
+    background: colors['amber'],
     'border-width': '0 1px 1px 1px',
     margin: '0 10px 0 10px',
     padding: '10px'
@@ -60,9 +60,10 @@ export const PilotingListLi = styled.li`
   display: flex;
   margin: ${({ state }) => pilotingListLiTypes[state]['margin']};
   padding: ${({ state }) => pilotingListLiTypes[state]['padding']};
+  transition: all 300ms ease;
 
   &:hover {
-    background: ${({ state }) => darken(0.1, pilotingListLiTypes[state]['background'])};
+    background: ${({ state }) => darken(0.15, pilotingListLiTypes[state]['background'])};
   }
 
   &:last-child {
@@ -70,7 +71,6 @@ export const PilotingListLi = styled.li`
   }
 
   & > span {
-    margin-right: 10px;
     width: 25%;
   }
 `

@@ -3,7 +3,7 @@ import moment from 'moment'
 
 import * as PilotWebApi from '../api/PilotWebApi'
 
-const parseDate = date => date.length > 0 ? moment(new Date(date)) : ''
+const parseDate = date => moment(new Date(date))
 
 const parseDatesFromVisits = visits => visits.map(v =>
   ({ ...v, pilotings: v.pilotings.map(s =>
@@ -17,7 +17,7 @@ const computePilotingState = (piloting, pastCurrent) => {
   return 'current'
 }
 
-const addBgColorToPilotings = pilotings => {
+const addStateToPilotings = pilotings => {
   let currentPassed = false
   return pilotings.map(p => {
     const state = computePilotingState(p, currentPassed)
@@ -29,7 +29,7 @@ const addBgColorToPilotings = pilotings => {
 const addProperties = visits => visits.map(v => ({
   ...v,
   active: false,
-  pilotings: addBgColorToPilotings(v.pilotings)
+  pilotings: addStateToPilotings(v.pilotings)
 }))
 
 class ShipVisitStore {

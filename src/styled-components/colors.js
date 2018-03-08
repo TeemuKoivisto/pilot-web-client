@@ -38,6 +38,7 @@ module.exports = {
   lightYellow: '#FFD55F',
   yellow: '#FFC82C',
   darkYellow: '#F8B700',
+  amber: '#FFCA28',
   // ui colors
   info: '#1FB6FF',
   success: '#13CE66',
