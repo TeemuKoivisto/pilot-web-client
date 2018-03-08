@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { ShipVisitItem } from '../elements/ShipVisitItem'
+import { ShipVisitItem } from './ShipVisitItem'
 
 const ShipVisitList = ({ shipVisits, onVisitClick }) =>
   <ul>

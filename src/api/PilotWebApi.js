@@ -1,4 +1,45 @@
 
+/*
+Preliminarily data models
+
+const VISIT = {
+  pilotings: []
+}
+
+const PILOTING = {
+  id: 1,
+  previousId: null,
+  nextId: 2,
+  start: '2018-02-08T06:16:55.581Z',
+  eta: '2018-02-08T10:11:55.581Z',
+}
+
+const SHIP = {
+  isa: 'FIF-412',
+  name: 'Finnfoam'
+}
+
+const ROUTE = {
+  id: 1,
+  startLocation: 'kotka-1',
+  endLocation: 'hamina-1',
+  maxDraft: 10,
+  maxWidth: 5,
+  pilotingLocationId: 1,
+}
+
+const PILOTING_LOCATION = {
+  name: 'majakka-1',
+}
+
+const PILOT = {
+  id: 1,
+  name: 'Pekka Koski',
+  nickname: 'Peksi'
+}
+
+*/
+
 const fakeResponse = [{
   shipName: 'titanic',
   pilotings: [

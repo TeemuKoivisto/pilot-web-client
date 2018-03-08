@@ -1,6 +1,8 @@
 import React from 'react'
 
 import Button from '../elements/Button'
+import { Input } from '../elements/Input'
+
 import { SmoothContainer } from '../styled-components/Container'
 import { ShipVisitListLi, ShipVisitItemHeader, PilotingListHeader, PilotingListLi } from '../styled-components/ShipVisit'
 
@@ -34,7 +36,12 @@ export const ShipVisitItem = ({ visit, onVisitClick, children, ...props }) =>
     { visit.pilotings.map((piloting, i) =>
       <PilotingListLi key={piloting.ship + i} state={piloting.state}>
         <span>{piloting.ship}</span>
-        <span>{piloting.eta.format('D.M.YYYY H:mm:ss')}</span>
+        <span>
+          { piloting.state === 'current' ?
+          <Input value={piloting.eta.format('D.M.YYYY H:mm:ss')}/>
+          : piloting.eta.format('D.M.YYYY H:mm:ss')
+          }
+        </span>
         <span>{piloting.location}</span>
         <span>{piloting.pilot}</span>
       </PilotingListLi>

@@ -44,9 +44,9 @@ export const ShipVisitListLi = styled.li`
 export const PilotingListHeader = styled.li`
   display: flex;
   padding: 10px;
+  margin: 0 10px 0 10px;
   
   & > span {
-    margin-right: 10px;
     width: 25%;
   }
 `
