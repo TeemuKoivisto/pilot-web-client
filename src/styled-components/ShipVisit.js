@@ -9,8 +9,19 @@ export const ShipVisitListLi = styled.li`
   padding: 10px;
 `
 
+export const PilotingListHeader = styled.li`
+  display: flex;
+  margin: 20px;
+  padding: 10px;
+  
+  & > span {
+    margin-right: 10px;
+    width: 25%;
+  }
+`
+
 export const PilotingListLi = styled.li`
-  background: ${({ bgColor })  => colors[bgColor]};
+  background: ${({ bgColor }) => colors[bgColor]};
   border: 1px solid black;
   cursor: pointer;
   display: flex;
@@ -19,5 +30,10 @@ export const PilotingListLi = styled.li`
 
   & > span {
     margin-right: 10px;
+    width: 25%;
   }
 `
+
+PilotingListLi.defaultProps = {
+  bgColor: 'green',
+}

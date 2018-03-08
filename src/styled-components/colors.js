@@ -1,5 +1,5 @@
 
-export default {
+module.exports = {
   // light shades
   white: '#FFFFFF',
   snow: '#F9FAFC',
@@ -44,3 +44,5 @@ export default {
   danger: '#FF4949',
   warning: '#FFC82C',
 }
+
+// export default colors
