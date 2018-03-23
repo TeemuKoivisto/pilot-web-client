@@ -40,6 +40,40 @@ const PILOT = {
 
 */
 
+import faker from 'faker'
+
+const generateFakeData = () => {
+  const shipCount = Math.floor(Math.random() * 20 + 2)
+  const ships = []
+  for (let i = 0; i <= shipCount; i++) {
+    const shipName = `M/S ${faker.name.firstName()}`
+    // const shipCode = faker.hacker.adjective() // TODO
+    let pilotName = `${faker.name.lastName()} ${faker.name.firstName()}`
+    let dateStart = Date.now() - Math.floor(Math.random() * 120 + 10) * 60 * 1000
+    let dateEnd
+    const pilotingsCount = Math.floor(Math.random() * 10 + 2)
+    const pilotings = []
+    for (let j = 0; j <= pilotingsCount; j++) {
+      pilotName = Math.random() > 0.7 ? `${faker.name.lastName()} ${faker.name.firstName()}` : pilotName
+      let start = new Date(dateStart).toISOString()
+      dateEnd = dateStart + (Math.random() * 30 + 10) * 60 * 1000
+      pilotings.push({
+        start,
+        eta: new Date(dateEnd).toISOString(),
+        location: `${faker.random.word()}-point`,
+        ship: shipName,
+        pilot: pilotName
+      })
+      dateStart = dateEnd
+    }
+    ships.push({
+      shipName,
+      pilotings,
+    })
+  }
+  return ships
+}
+/*
 const fakeResponse = [{
   shipName: 'titanic',
   pilotings: [
@@ -105,5 +139,8 @@ const fakeResponse = [{
     },
   ]
 }]
-
-export const getVisits = () => Promise.resolve(fakeResponse)
+*/
+export const getVisits = () => {
+  const ships = generateFakeData()
+  return Promise.resolve(ships)
+}

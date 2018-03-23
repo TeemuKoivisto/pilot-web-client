@@ -7,7 +7,13 @@ import { SmoothContainer } from '../styled-components/Container'
 import { ShipVisitListLi, ShipVisitItemHeader, PilotingListHeader, PilotingListLi } from '../styled-components/ShipVisit'
 
 const computeButtonText = visit => visit.active ? 'Sulje' : 'Avaa'
-const findCurrentPiloting = visit => visit.pilotings.find(p => p.state === 'current')
+const findCurrentPiloting = visit => {
+  const current = visit.pilotings.find(p => p.state === 'current')
+  if (current) return current
+  const upcoming = visit.pilotings.find(p => p.state === 'upcoming')
+  if (upcoming) return upcoming
+  return visit.pilotings[visit.pilotings.length -1 ]
+}
 
 const ShipVisitHeader = ({ piloting, buttonText, onVisitClick }) =>
   <ShipVisitItemHeader state={piloting.state}>
@@ -38,7 +44,7 @@ export const ShipVisitItem = ({ visit, onVisitClick, children, ...props }) =>
         <span>{piloting.ship}</span>
         <span>
           { piloting.state === 'current' ?
-          <Input value={piloting.eta.format('D.M.YYYY H:mm:ss')}/>
+          <Input value={piloting.eta.format('D.M.YYYY H:mm:ss')} disabled="true"/>
           : piloting.eta.format('D.M.YYYY H:mm:ss')
           }
         </span>
