@@ -1,7 +1,7 @@
 
-# pilot-web-client
+# pilot-web-client [![Build Status](https://travis-ci.org/TeemuKoivisto/pilot-web-client.svg?branch=master)](https://travis-ci.org/TeemuKoivisto/pilot-web-client)
 
-Is awesome.
+Is awesome. [Currently hosted S3-site.](https://d2gue3unvsu908.cloudfront.net)
 
 ## How to install
 
