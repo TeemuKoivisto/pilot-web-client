@@ -3,8 +3,9 @@ import React from 'react'
 import Button from '../elements/Button'
 import { Input } from '../elements/Input'
 
-import { SmoothContainer } from '../styled-components/Container'
-import { ShipVisitListLi, ShipVisitItemHeader, PilotingListHeader, PilotingListLi } from '../styled-components/ShipVisit'
+import { SmoothContainer, FlexRow } from '../styled-components/Container'
+import { ShipVisitListLi, ShipVisitItemHeader,
+  PilotingListUl, PilotingListHeader, PilotingListLi } from '../styled-components/ShipVisit'
 
 const computeButtonText = visit => visit.active ? 'Sulje' : 'Avaa'
 const findCurrentPiloting = visit => {
@@ -16,13 +17,15 @@ const findCurrentPiloting = visit => {
 }
 
 const ShipVisitHeader = ({ piloting, buttonText, onVisitClick }) =>
-  <ShipVisitItemHeader state={piloting.state}>
-    <span>{piloting.ship}</span>
-    <span>{piloting.eta.format('D.M.YYYY H:mm:ss')}</span>
-    <span>{piloting.location}</span>
-    <span>{piloting.pilot}</span>
+  <FlexRow>
+    <ShipVisitItemHeader state={piloting.state}>
+      <span>{piloting.ship}</span>
+      <span>{piloting.eta.format('D.M.YYYY H:mm:ss')}</span>
+      <span>{piloting.location}</span>
+      <span>{piloting.pilot}</span>
+    </ShipVisitItemHeader>
     <Button onClick={onVisitClick} size="medium">{buttonText}</Button>
-  </ShipVisitItemHeader>
+  </FlexRow>
 
 export const ShipVisitItem = ({ visit, onVisitClick, children, ...props }) =>
   <ShipVisitListLi {...props}>
@@ -32,7 +35,7 @@ export const ShipVisitItem = ({ visit, onVisitClick, children, ...props }) =>
       onVisitClick={onVisitClick}
     />
     <SmoothContainer visible={visit.active}>
-    <ul>
+    <PilotingListUl>
       <PilotingListHeader>
         <span>ISA</span>
         <span>ETA</span>
@@ -52,6 +55,6 @@ export const ShipVisitItem = ({ visit, onVisitClick, children, ...props }) =>
         <span>{piloting.pilot}</span>
       </PilotingListLi>
     )}
-    </ul>
+    </PilotingListUl>
     </SmoothContainer>
   </ShipVisitListLi>

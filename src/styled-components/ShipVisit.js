@@ -26,25 +26,30 @@ const pilotingListLiTypes = {
 
 export const ShipVisitItemHeader = styled.div`
   align-items: center;
+  background: ${({ state }) => pilotingListLiTypes[state]['background']};
   display: flex;
+  margin-right: 5px;
   justify-content: space-between;
-
+  width: 100%;
   & > span {
     width: 20%;
+    margin: 5px;
   }
 `
 
 export const ShipVisitListLi = styled.li`
-  border: 1px solid black;
   cursor: pointer;
   margin: 20px;
-  padding: 10px;
+`
+
+export const PilotingListUl = styled.ul`
+  margin: 10px;
 `
 
 export const PilotingListHeader = styled.li`
   display: flex;
-  padding: 10px;
   margin: 0 10px 0 10px;
+  padding: 10px;
   
   & > span {
     width: 25%;
